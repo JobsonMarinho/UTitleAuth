@@ -8,6 +8,7 @@ import com.undeadlydev.UTA.addons.PlaceholderAPIAddon;
 import com.undeadlydev.UTA.interfaces.CMIAddon;
 import com.undeadlydev.UTA.interfaces.FastLAddon;
 import com.undeadlydev.UTA.interfaces.PlaceholderAddon;
+import com.undeadlydev.UTA.placeholders.Placeholders;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -36,6 +37,7 @@ public class AddonManager {
 
     public void reload() {
         if (check("PlaceholderAPI")) {
+            new Placeholders().register();
             placeholder = new PlaceholderAPIAddon();
         }
         if (check("CMILib")) {
