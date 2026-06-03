@@ -90,6 +90,15 @@ public enum Versions {
 
     v1_21_x(12120),
 
+    // Year-based scheme introduced in 2026 (e.g. "26.1.2" -> year 26, drop 1, hotfix 2).
+    // Value formula keeps ordering: major*10000 + minor*100 + patch.
+    v26(260000),
+    v26_1(260100),
+    v26_1_1(260101),
+    v26_1_2(260102),
+
+    v26_1_x(260110),
+
     vUnsupported(1000000);
 
     private int value;
@@ -135,11 +144,21 @@ public enum Versions {
     }
 
     public static Versions getVersion() {
-        Versions retorno = Versions.vUnsupported;
+        // First pass: exact match against a known version (e.g. "26.1.2").
         for(Versions version : Versions.values()) {
             if(version.IsEquals()) {
-                retorno =  version;
-                break;
+                return version;
+            }
+        }
+        // Second pass: unknown patch of a known release line (e.g. a future "26.1.3"
+        // hotfix). Fall back to the highest known version sharing the major.minor
+        // prefix so newer builds keep working instead of being flagged Unsupported.
+        Versions retorno = Versions.vUnsupported;
+        for(Versions version : Versions.values()) {
+            if(version != Versions.vUnsupported && version.Is()) {
+                if(retorno == Versions.vUnsupported || version.getValue() > retorno.getValue()) {
+                    retorno = version;
+                }
             }
         }
         return retorno;

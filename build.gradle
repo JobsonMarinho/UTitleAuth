@@ -46,7 +46,8 @@ dependencies {
     implementation 'org.bstats:bstats-bukkit:3.1.0'
 
     // https://github.com/CryptoMorin/XSeries
-    implementation 'com.github.cryptomorin:XSeries:13.6.0'
+    // 13.7.0 adds support for the year-based MC scheme (v26+, e.g. 26.1.2)
+    implementation 'com.github.cryptomorin:XSeries:13.7.0'
 
     // https://github.com/TechnicallyCoded/FoliaLib
     implementation 'com.tcoded:FoliaLib:0.5.1'
