@@ -16,7 +16,6 @@ titles:
     subtitle: "&eLogin automatically"
 
 message:
-  notifyUpdate: '&7[&c&lUTitleAuth&7] &8| &bAn update for &fUTitleAuth v{CURRENT} &e(&fUTitleAuth &fv{NEW}&e) &bis available at &e &c{LINK}'
   reload: "&cThe config was reloaded."
   reloadLang: "&cLang was reloaded."
   noPermission: "&cYou are not authorized for this."

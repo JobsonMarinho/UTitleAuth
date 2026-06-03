@@ -1,5 +1,3 @@
-update-check: true
-
 addons:
   PlaceholderAPI: true
   CMILib: false
